@@ -63,7 +63,7 @@ exports.getAllProducts = async(req, res)=>{
 exports.getProduct = async(req, res)=>{
     const {id} = req.params
     try {
-        const product = await Product.find({_id: id})
+        const product = await Product.findOne({_id: id})
         res.status(200).json(product)
     } catch (error) {
         res.status(400).json({"message": "product not found!"})

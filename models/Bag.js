@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const BagSchema = new mongoose.Schema({
-    items:[{type :mongoose.Schema.Types.ObjectId, ref: "product"}]
+    item:{type :mongoose.Schema.Types.ObjectId, ref: "product"},
+    quantity:Number
 })
 
 const Bag = mongoose.model("bag", BagSchema);
