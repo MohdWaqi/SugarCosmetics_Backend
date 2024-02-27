@@ -29,11 +29,11 @@ exports.loginUser = async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(401).json({ message: 'Please login first' });
+            return res.status(401).json({ message: 'Please Register first!!!' });
         }
         const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) {
-            return res.status(401).json({ message: 'Invalid password' });
+            return res.status(401).json({ message: 'Invalid password!!!' });
         }
         const accessToken = generateAccessToken(user);
         const refreshToken = generateRefreshToken(user);

@@ -3,7 +3,7 @@ const { wishlistAdd, wishlistRemove, wishlistProducts } = require('../controller
 
 const router = express.Router();
 
-router.post('/add/:id', wishlistAdd);
+router.post('/add', wishlistAdd);
 
 router.delete('/delete/:id',  wishlistRemove);
 

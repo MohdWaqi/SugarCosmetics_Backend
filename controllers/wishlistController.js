@@ -5,7 +5,7 @@ const Wishlist = require("../models/Wishlist");
 
 exports.wishlistAdd =async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id } = req.body;
         const userId = req.user.id; 
         const user = await User.findById(userId)
         if (!user) {
@@ -30,6 +30,8 @@ exports.wishlistAdd =async (req, res) => {
             existingWishlist.items.push(id);
             await existingWishlist.save();
         }
+        product.like = true;
+        await product.save();
         res.status(200).json({ message: 'Product added to wishlist successfully' });
     } catch (error) {
         console.error('Error adding product to wishlist:', error);
@@ -55,6 +57,8 @@ exports.wishlistRemove = async (req, res) => {
         }
         wishlist.items = wishlist.items.filter(item => item.toString() !== id);
         await wishlist.save();
+        product.like = false;
+        await product.save();
         res.status(200).json({ message: 'Product deleted from wishlist successfully' });
     } catch (error) {
         console.error('Error deleting product from wishlist:', error);
