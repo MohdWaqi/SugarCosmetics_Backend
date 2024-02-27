@@ -3,15 +3,19 @@ const express = require('express');
 const cors = require('cors');
 const connected = require('./config/db');
 const productRouter = require('./routes/productRoutes');
+const cookieParser = require("cookie-parser");
+const userRouter = require('./routes/userRoutes');
 
 connected()
 
 const app = express()
 app.use(express.json())
 app.use(cors())
+app.use(cookieParser())
 const port = process.env.PORT;
 
 app.use(productRouter)
+app.use(userRouter)
 
 app.listen(port, ()=>{
     console.log(`listening on port ${port}`)
