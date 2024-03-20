@@ -12,7 +12,7 @@ connected()
 
 const app = express()
 app.use(express.json())
-app.use(cors({origin:"https://sugar-cosmetics-frontend.vercel.app" ,credentials:true}))
+app.use(cors({origin:"https://waqi-sugar-cosmetics.vercel.app/" ,credentials:true}))
 app.use(cookieParser())
 const port = process.env.PORT;
 
